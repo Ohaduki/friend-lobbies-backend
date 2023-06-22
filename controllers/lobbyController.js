@@ -248,6 +248,15 @@ class lobbyController{
         }
     }
 
+    static async getRandom(req, res, next){
+        try{
+            const lobbies = await LobbiesDAO.getRandom(20)
+            return res.ok(lobbies)
+        }catch(err){
+            return res.status(500).send(err)
+        }
+    }
+
 }
 
 module.exports = lobbyController

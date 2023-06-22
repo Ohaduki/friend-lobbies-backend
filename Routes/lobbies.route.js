@@ -5,7 +5,7 @@ const route = express.Router();
 const { validateSchema }  = require("../validation/validateSchema");
 const { multerUpload } = require("../lib/multerUpload");
 const { editLobbySchema } = require("../validation/schemas/editLobby.schema");
-const fs = require('fs');
+
 
 route.get('/lobby/:id', lobbyController.getById)
 
@@ -42,5 +42,7 @@ route.get('/interests/', lobbyController.getInterests)
 route.get('/users/:id', lobbyController.getUsers)
 
 route.get('/NotInterests/', lobbyController.getNotInterests)
+
+route.get('/random/', lobbyController.getRandom)
 
 module.exports = route;
