@@ -83,9 +83,9 @@ class LobbiesDAO{
             const lobby = await this.getById(LobbyID)
             const {messages} = lobby
             const user = await UsersDAO.getById(userID)
-            const {muted} = user
-            const filteredMessages = messages.filter(message => !muted.includes(message.userID))
-            return filteredMessages
+            // const {mutes} = user
+            // const filteredMessages = messages.filter(message => !muted.includes(message.userID))
+            return messages
         }catch(err){
             throw new Error(`Couldn't get messages: ${err}`)
         }

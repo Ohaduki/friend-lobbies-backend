@@ -122,6 +122,7 @@ class lobbyController{
             const messages = await LobbiesDAO.getMessages(req.params.id, req.userID)
             return res.ok(messages)
         }catch(err){
+            console.log(err)
             return res.status(500).send(err)
         }
     }
@@ -217,8 +218,8 @@ class lobbyController{
             const usersToSend = []
             for (const user of users){
                 const userToSend = await UsersDAO.getById(user)
-                const {username, picture} = userToSend
-                usersToSend.push({username, picture})
+                const {username, picture, _id} = userToSend
+                usersToSend.push({username, picture, _id})
             }
             return res.ok(usersToSend)
         }catch(err){
