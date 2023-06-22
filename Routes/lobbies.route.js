@@ -45,4 +45,6 @@ route.get('/NotInterests/', lobbyController.getNotInterests)
 
 route.get('/random/', lobbyController.getRandom)
 
+route.get('/all', lobbyController.getAll)
+
 module.exports = route;
