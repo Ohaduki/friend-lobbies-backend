@@ -42,7 +42,6 @@ class lobbyController{
             if (req.files){
                 for (const file of req.files){
                     const url = await cloudinaryUpload(file.path);
-                    console.log(url)
                     fs.unlinkSync(file.path);
                     pictures.push(url)
                 }
@@ -113,6 +112,7 @@ class lobbyController{
             const message = await LobbiesDAO.sendMessage(req.params.id, req.userID, req.body.message)
             return res.ok("Message sent")
         }catch(err){
+            console.log(err)
             return res.status(500).send(err)
         }
     }

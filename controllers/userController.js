@@ -119,9 +119,11 @@ class userController{
     static async addInvite(req, res, next){
         try{
             const user = await UsersDAO.getById(req.params.id);
+            const sender = await UsersDAO.getById(req.userID);
+            const picture = sender.picture;
             const invites = user.invites;
             const _id = uuidv4();
-            invites.push({...req.body, _id});
+            invites.push({...req.body, _id, picture});
             await UsersDAO.update(req.params.id, {invites});
             return res.ok("Added invite")
         }catch(err){

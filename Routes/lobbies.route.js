@@ -11,7 +11,7 @@ route.get('/lobby/:id', lobbyController.getById)
 
 route.get('/categories', lobbyController.getCategories)
 
-route.post('/', multerUpload.array('pictures', 5), validateSchema(lobbySchema), lobbyController.addLobby)
+route.post('/lobby', multerUpload.array('pictures', 5), validateSchema(lobbySchema), lobbyController.addLobby)
 
 route.put('/:id', multerUpload.array('pictures', 5), validateSchema(editLobbySchema), lobbyController.editLobby)
 
@@ -21,7 +21,7 @@ route.put('/join/:id', lobbyController.join)
 
 route.put('/leave/:id', lobbyController.leave)
 
-route.post('/messsage/:id', lobbyController.sendMessage)
+route.post('/message/:id', lobbyController.sendMessage)
 
 route.get('/message/:id', lobbyController.getMessages)
 
